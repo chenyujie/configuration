@@ -1,0 +1,33 @@
+[DEFAULT]
+control_exchange = cinder
+notification_driver = cinder.openstack.common.notifier.rpc_notifier
+rootwrap_config = /etc/cinder/rootwrap.conf
+api_paste_confg = /etc/cinder/api-paste.ini
+iscsi_helper = tgtadm
+volume_name_template = volume-%s
+volume_group = cinder-volumes
+verbose = True
+auth_strategy = keystone
+state_path = /var/lib/cinder
+lock_path = /var/lock/cinder
+volumes_dir = /var/lib/cinder/volumes
+rpc_backend = cinder.openstack.common.rpc.impl_kombu
+rabbit_host = 162.3.110.93
+rabbit_port = 5672
+rabbit_userid = guest
+rabbit_password = openstack
+glance_host = 162.3.110.93
+
+[database]
+
+connection = mysql://cinder:openstack@162.3.110.93/cinder
+
+
+[keystone_authtoken]
+auth_uri = http://162.3.110.93:5000
+auth_host = 162.3.110.93
+auth_port = 35357
+auth_protocol = http
+admin_tenant_name = service
+admin_user = cinder
+admin_password = openstack
